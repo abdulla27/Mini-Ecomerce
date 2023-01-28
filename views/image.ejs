@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+
+<h4>Import photos</h4>
+<form method="post" action="/photoPC">
+    <input type="text" placeholder="product" name="product">
+    <input type="text" placeholder="price" name="price">
+    <input type="text" placeholder="location of the image" name="product_image">
+    <button class="button button-primary">add the product with photo</button>
+
+</form>
+
+<h4>Import from the web</h4>
+<form method="post" action="/photoWEB">
+    <input type="text" placeholder="product" name="product">
+    <input type="text" placeholder="price" name="price">
+    <input type="text" placeholder="url of the image" name="product_image">
+    <button class="button button-primary">add the product with photo</button>
+
+</form>
+
+<h4>Add photo direct to database</h4>
+<form method="post" enctype="multipart/form-data" action="/photoDB">
+    <input type="text" placeholder="product" name="product">
+    <input type="text" placeholder="price" name="price">
+    <input type="file" name="product_image">
+    <button class="button button-primary">add the product with photo</button>
+
+</form>
+

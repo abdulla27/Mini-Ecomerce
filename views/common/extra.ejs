@@ -1,0 +1,89 @@
+
+
+<%- include("./common/head")%>
+<body>
+    <header>
+        <%- include("./common/header")%>
+    </header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>product list</h1>
+                <% if(data.length){%>
+                    <div class="row">
+                    <% for(let i of data){ %> 
+                        <div class="col-md-3 text-center">
+                            <div class="product">
+                                <div class="text-center">
+                                    <img src="<%= i.product_image %>" alt="img-fluid">
+                                </div>
+                                <h3><%= i.productname %></h3>
+                                <div>price:<strong>$<%= i.price%></strong></div>
+                            </div>
+                            <p><%= i.productdetail%></p>
+                            <div class="text-center">
+                                <a href="" class="btn btn-primary">View Details</a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                <% } %>
+            <% } else { %> <div>no product available</div> <% } %>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <%- include("./common/footer")%>
+</footer>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+<!-- ye faltu ise use mat kaio ok -->
+
+<!-- <%- include("./common/head")%>
+    <body>
+        <header>
+            <%- include("./common/header")%>
+        </header>
+        <main>
+            <div class="container">
+                <div class="col col-md-12">
+                    <br>
+                    <center><p style="color: red;"><%=JSON.stringify(data)%></p>
+    
+                    <p>this is the body</p></center>
+    
+                </div>
+            </div>
+    
+            <center><div>
+                <h2><a href="/buyer_registeration" target="_blank"> Signup as a buyer</a></h2>
+                <br>
+                <h2><a href="/seller_registeration" target="_blank"> Signup as a seller</a></h2>
+            </div></center><br>
+            <center><div>
+                <h2><a href="/buyer_login" target="_blank"> Signin as a buyer</a></h2>
+                <br>
+                <h2><a href="/seller_login" target="_blank"> Signin as a seller</a></h2>
+            </div></center>
+        </main>
+        <footer>
+            <%- include("./common/footer")%>
+        </footer>
+    
+        
+    </body>
+    </html> -->
+    

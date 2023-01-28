@@ -1,0 +1,73 @@
+<%- include("./common/head")%>
+    <style>
+        .image img {
+            width: 350px;
+            height: 350px;
+            border-width: 2px;
+            border-color: #555;
+            border-style: solid;
+            margin-top: 10px;
+            margin-right: 400px;
+            margin-left: 500px;
+        }
+        .pname{
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .pdetail{
+            text-align: center;
+            font-size: 20px;
+            font-weight: lighter;
+
+        }
+        h5{
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .pdetail p{
+            font-weight: bold;
+        }
+        .pinfo{
+            text-align: center;
+            padding-bottom: 80px;
+
+        }
+        
+
+
+    </style>
+
+    <body>
+        <header>
+            <%- include("./common/header")%>
+        </header>
+        <div class="pname">
+            <%= data.productname %>
+        </div>
+
+        <div class="image">
+            <img src="<%= data.product_image %>" alt="img-fluid">
+        </div>
+        <h5>See details below:</h5>
+        <div class="pdetail"><p>Price: <strong>$<%= data.price%></strong></p></div>
+        <div class="pdetail">Color: <%= data.color%></div>
+        <div class="pdetail">Quantity: <%= data.quantity%></div>
+        <div class="pdetail">Brand: <%= data.brandname%></div>
+        <div class="pinfo">Information: <%= data.productdetail%><br><br>
+        <a href="/cart/<%= data.id %>"><button class="btn btn-primary">ADD to Cart</button></a>
+        </div>
+
+
+
+
+
+        <footer>
+            <%- include("./common/footer")%>
+        </footer>
+
+
+    </body>
+
+    </html>
