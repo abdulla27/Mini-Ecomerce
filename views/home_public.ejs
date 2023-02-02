@@ -3,12 +3,14 @@
     <header>
         <%- include("./common/header")%>
     </header>
+<div class="featured">
     <div class="small-container">
         <h2 class="title">Featured products</h2>
         <div class="row">
-            <div class="col-4">
+            
                 <% if(data.length){%>
                     <% for(let i of data){ %> 
+                        <div class="col-4">
                                     <img src="<%= i.product_image %>" alt="img-fluid">
                            
                                 <h4><%= i.productname %></h4>
@@ -22,14 +24,24 @@
                                     <div class="btn"><a href="/details/<%= i.id %>" class="btn btn-primary">View Details</a></div>
                                     <a href="/cart/<%= i.id %>"><button class="btn btn-primary">ADD to Cart</button></a>
                                 </div>
+                        </div>
                          
                 
                     <% } %>
-                <% } else { %> <div>no product available</div> <% } %>
+                <% } else { %> <div><h1>no product available....</h1></div> <% } %>
+            
+        
+
+                        
             
             </div>
+
         </div>
     </div>
+</div>
+
+    
+
     <footer>
         <%- include("./common/footer")%>
     </footer>

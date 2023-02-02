@@ -53,4 +53,4 @@ require("./maincart")(app,express,mysqlcon)
 app.set("view engine","ejs")
 
 
-app.listen(7004,()=>{console.log("listeningg 7004");})
+app.listen(7005,()=>{console.log("listeningg 7005");})

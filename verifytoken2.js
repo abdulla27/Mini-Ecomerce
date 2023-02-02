@@ -9,6 +9,7 @@ module.exports=(req,res,next)=>{
       let verifyToken=jwt.verify(token,"secretkey");//rukne ke liye chhod do baki aage bado
       console.log({verifyToken});
       if(verifyToken){
+        // if (role=1){
         req.body.mydata=verifyToken
         next()
       }

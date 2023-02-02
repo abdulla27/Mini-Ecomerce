@@ -1,5 +1,6 @@
 module.exports = (app, express, mysqlcon) => {
 const acces = require("./verifytoken")
+const acces2 = require("./verifytoken2")
 const jwt = require("jsonwebtoken");
 const cloudinary=require("cloudinary").v2
 const uuid=require("uuid")
@@ -52,14 +53,14 @@ const uuid=require("uuid")
         let stproductdetail=req.body.productdetail
         let stuuid=uuid.v4()
         console.log(stuuid);
-
+        
 
         console.log(stproduct_image,"<<<<url>>>>");
 
 
 
         
-        let a= mysqlcon(`insert into product (productname,product_image,price,color,product_created_by,quantity,brandname,productdetail,uuid) values ("${stproductname}","${stproduct_image}","${stprice}","${stcolor}","${stcreater}","${stquantity}","${stbrandname}","${stproductdetail}","${stuuid}")`)
+        let a= mysqlcon(`insert into product (productname,product_image,price,color,product_created_by,quantity,brandname,productdetail,product_id) values ("${stproductname}","${stproduct_image}","${stprice}","${stcolor}","${stcreater}","${stquantity}","${stbrandname}","${stproductdetail}","${stuuid}")`)
         return res.redirect("/home")
     })
     })

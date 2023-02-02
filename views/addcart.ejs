@@ -68,9 +68,25 @@
         <div class="pinfo">Information: <%= data.productdetail%><br><br>
             <label class="form-label">Quantity:</label>
             <input type="text" name="quntityinput" placeholder="Add quantity" id="addquantity"><br>
-            <a href="/maincart"><button class="btn btn-primary" onclick="myfun" >ADD to Cart</button></a>
+            
+            <button class="btn btn-primary" onclick="myfun(`<%=JSON.stringify(data)%>`)">ADD to Cart</button>
+            
             <script>
-
+                function myfun(data){
+                    let datas=JSON.parse(data);
+                let qty=document.getElementById("addquantity").value
+                datas.quantity=qty;
+                console.log({token:document.cookie})
+                fetch('/add', {
+                    method: 'POST',
+                    body: JSON.stringify(datas),
+                    headers: { 'Content-Type': 'application/json' ,
+                    cookie:document.cookie
+                    
+                }
+                }).then(res => res.json())
+                  .then(json => console.log(json));
+                }
             </script>
         </div>
         <footer>

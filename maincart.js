@@ -18,7 +18,11 @@ module.exports = (app, express, mysqlcon) => {
             // let stproduct_image=value1[0].product_image
             // console.log(stid);
             // console.log(value1[0]);
-            res.render("maincart")
+            let value= await mysqlcon(`select*from cart`)
+            console.log({value});
+            res.render("maincart",{data: value})
+
+            
         })
         // router.post("/maincart",(req,res)=>{
         //     console.log(stproduct_image);

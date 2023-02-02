@@ -15,11 +15,11 @@ module.exports=(req,res,next)=>{
         
       }
       else{
-      return res.redirect("sorry")
+      return res.send("sorry")
       }
     // a=JSON.parse(a);
     }
     else{
-      res.redirect("sorry again")
+      res.send("<h1>sorry you are not autherized.....<h1>")
     }
   }
