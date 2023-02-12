@@ -58,7 +58,7 @@ module.exports = (app, express, mysqlcon) => {
             if (value[0]["username"] == stusername) {
                 if (value[0]["password"] == stpassword) { //value[0]["stpassword"]
                     console.log(value[0]["password"]);
-                    let myToken = jwt.sign(JSON.stringify({ id: value[0]["uuid"], role: value[0]["role"] }), "secretkey")
+                    let myToken = jwt.sign(JSON.stringify({ seller_id: value[0]["seller_id"], role: value[0]["role"] }), "secretkey")
                     console.log(myToken);
                     return res.cookie("auth", myToken).redirect("/add_product")
                 }

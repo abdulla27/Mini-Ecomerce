@@ -56,7 +56,50 @@
         <div class="pdetail">Quantity: <%= data.quantity%></div>
         <div class="pdetail">Brand: <%= data.brandname%></div>
         <div class="pinfo">Information: <%= data.productdetail%><br><br>
-        <a href="/cart/<%= data.id %>"><button class="btn btn-primary">ADD to Cart</button></a>
+        <!-- <a href="/cart/<%= data.id %>"><button class="btn btn-primary">ADD to Cart</button></a> -->
+
+        <center><div  class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <label class="form-label"><strong>Quantity:</strong></label>
+            <button class="btn btn-link px-2"
+              onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+              <i class="fas fa-minus"></i>
+            </button>
+
+            <input id="addquantity" min="0" name="quantity" value="1" type="number"
+              class="form-control form-control-sm" />
+
+            <button class="btn btn-link px-2"
+              onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+              <i class="fas fa-plus"></i>
+            </button>
+        </div><br>
+            <button class="btn btn-primary" onclick="myfun(`<%=JSON.stringify(data)%>`);popUp()">ADD to Cart</button>
+    </center>
+        
+        <script>
+            function myfun(data){
+                let datas=JSON.parse(data);
+            let qty=document.getElementById("addquantity").value
+            datas.quantity=qty;
+            console.log({token:document.cookie})
+            fetch('/add', {
+                method: 'POST',
+                body: JSON.stringify(datas),
+                headers: { 'Content-Type': 'application/json' ,
+                cookie:document.cookie
+                
+            }
+            }).then(res => res.json())
+              .then(json => console.log(json));
+            }
+
+            function popUp(){
+                swal("Great!","your product is added in your cart section and you can check it by clicking cart icon","success");
+            }
+        </script>
+
+
+
         </div>
 
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <title>Stripe Payment Demo</title>
+  <body>
+    <center>
+      <h3><strong>Taxes: Rs.<%=taxes%></strong></h3>
+      <h3><strong>Shipping price: Rs.<%=shipping%></strong></h3>
+
+      <h2><strong>Finally Your Total Amount: Rs.<%=subtotal%></strong></h2>
+
+      <form action="payment" method="POST">
+        <script
+          src="//checkout.stripe.com/v2/checkout.js"
+          class="stripe-button"
+          data-key="<%= key %>"
+          data-amount="<%=subtotal*100%>"
+          data-currency="INR"
+          data-name="Mr. Abdulla"
+          data-description="Buy Node.js Complete Course"
+          data-locale="auto"
+        ></script>
+      </form>
+    </center>
+  </body>
+</html>

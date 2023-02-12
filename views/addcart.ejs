@@ -66,10 +66,27 @@
         <div class="pdetail">Quantity: <%= data.quantity%></div>
         <div class="pdetail">Brand: <%= data.brandname%></div>
         <div class="pinfo">Information: <%= data.productdetail%><br><br>
-            <label class="form-label">Quantity:</label>
-            <input type="text" name="quntityinput" placeholder="Add quantity" id="addquantity"><br>
+            <!-- <label class="form-label">Quantity:</label> -->
+            <!-- <input type="text" name="quntityinput" placeholder="Add quantity" id="addquantity"><br> -->
             
-            <button class="btn btn-primary" onclick="myfun(`<%=JSON.stringify(data)%>`)">ADD to Cart</button>
+            <!-- <button class="btn btn-primary" onclick="myfun(`<%=JSON.stringify(data)%>`)">ADD to Cart</button> -->
+            <center><div  class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                <label class="form-label"><strong>Quantity:</strong></label>
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="addquantity" min="0" name="quantity" value="1" type="number"
+                  class="form-control form-control-sm" />
+
+                <button class="btn btn-link px-2"
+                  onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+            </div><br>
+                <button class="btn btn-primary" onclick="myfun(`<%=JSON.stringify(data)%>`); popUp()">ADD to Cart</button>
+        </center>
             
             <script>
                 function myfun(data){
@@ -87,6 +104,11 @@
                 }).then(res => res.json())
                   .then(json => console.log(json));
                 }
+
+                function popUp(){
+                    swal("Great!","your product is added in your cart section and you can check it by clicking cart icon.","success");
+                }
+                
             </script>
         </div>
         <footer>

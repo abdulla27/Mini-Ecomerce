@@ -19,7 +19,7 @@ const uuid=require("uuid")
         },
         filename:(req,file,cb)=>{
             let newname=Date.now()+"-"+file.originalname
-            /
+            
             cb(null,newname)
         }
     })
@@ -38,8 +38,10 @@ const uuid=require("uuid")
         res.render("add_product")
     })
     router.post("/add_product",acces,(req,res)=>{
+
         console.log(req.body,"////////")
         const file=req.files.product_image
+        console.log(file,"+++++");
         cloudinary.uploader.upload(file.tempFilePath,(err,result)=>{
             console.log(result,"|||||\\>>><<<<");
         
@@ -48,11 +50,13 @@ const uuid=require("uuid")
         let stprice=req.body.price
         let stcolor=req.body.color
         let stquantity=req.body.quantity
-        let stcreater=req.body.product_created_by
+        // let stcreater=req.body.product_created_by
         let stbrandname=req.body.brandname
         let stproductdetail=req.body.productdetail
-        let stuuid=uuid.v4()
-        console.log(stuuid);
+        let stseller_id=req.body.mydata.seller_id
+        console.log(stseller_id,"-------");
+        let stproduct_id=uuid.v4()
+        console.log(stproduct_id);
         
 
         console.log(stproduct_image,"<<<<url>>>>");
@@ -60,7 +64,7 @@ const uuid=require("uuid")
 
 
         
-        let a= mysqlcon(`insert into product (productname,product_image,price,color,product_created_by,quantity,brandname,productdetail,product_id) values ("${stproductname}","${stproduct_image}","${stprice}","${stcolor}","${stcreater}","${stquantity}","${stbrandname}","${stproductdetail}","${stuuid}")`)
+        let a= mysqlcon(`insert into product (productname,product_image,price,color,quantity,brandname,productdetail,product_id,seller_id) values ("${stproductname}","${stproduct_image}","${stprice}","${stcolor}","${stquantity}","${stbrandname}","${stproductdetail}","${stproduct_id}","${stseller_id}")`)
         return res.redirect("/home")
     })
     })

@@ -13,15 +13,29 @@ module.exports = (app, express, mysqlcon) => {
         console.log(req.body,"////////");
         let stusername=req.body.username
         let stpassword=req.body.password;
-        let stuuid=uuid.v4()
+        let stemail=req.body.email;
+        let stseller_id=uuid.v4()
+        let stgender=req.body.inlineRadioOptions
+
+
+        if(stgender=="option1"){
+            stgender="female"
+        }
+        else if(stgender=="option2"){
+            stgender="male"
+        }
+        else if(stgender=="option3"){
+            stgender="other"
+        }
+
         try{
-            console.log(stuuid,"0000000000000000000000s");
+            console.log(stseller_id,"0000000000000000000000s");
             let value=await mysqlcon("select * from seller_registeration");
             console.log(value,"---------------------------");
         for (let i in value) {
             if (value[i].username === stusername) { return res.send("seller username already exists") }
         }
-        let a= await mysqlcon(`insert into seller_registeration (username,password,uuid,role) values ("${stusername}","${stpassword}","${stuuid}",1)`)
+        let a= await mysqlcon(`insert into seller_registeration (username,password,seller_id,email,gender,role) values ("${stusername}","${stpassword}","${stseller_id}","${stemail}","${stgender}",1)`)
         return res.redirect("/seller_login")
         }
         catch(err){

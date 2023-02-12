@@ -20,7 +20,13 @@ try{
         if (value[i].username === stusername) { return res.send("username already exists.") }
     }
     let a= await mysqlcon(`insert into user (username,password,role) values ("${stusername}","${stpassword}","${strole}")`)
-    return res.redirect("/login")
+    if (strole=1){
+       res.redirect("/seller_login")
+    }
+    else{
+
+        return res.redirect("/buyer_login")
+    }
 }
 catch(err){
     console.log(err);

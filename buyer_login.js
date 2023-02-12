@@ -1,6 +1,6 @@
+const jwt = require("jsonwebtoken")
 module.exports = (app, express, mysqlcon) => {
 const acces = require("./verifytoken")
-const jwt = require("jsonwebtoken")
 app.set("view engine","ejs")
 
     const router = express.Router()
@@ -19,7 +19,7 @@ app.set("view engine","ejs")
             for (let i in value) {
                 if (value[i].username == stusername) {
                     if (value[i].password == stpassword) {
-                        let myToken = jwt.sign(JSON.stringify(value[i]), "secretkey")
+                        let myToken = jwt.sign(JSON.stringify({ buyer_id: value[i]["buyer_id"], role: value[i]["role"] }), "secretkey")
                         console.log(myToken);
                         return res.cookie("auth",myToken).redirect("/public_home")
                     }

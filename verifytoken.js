@@ -11,6 +11,7 @@ module.exports=(req,res,next)=>{
       if(verifyToken){
         if(verifyToken["role"]==1)
         req.body.mydata=verifyToken
+        console.log(req.body.mydata);
         next()
         
       }
