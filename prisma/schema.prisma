@@ -1,0 +1,66 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// generator client {
+//     provider = "prisma-client-js"
+// }
+
+// datasource db {
+//     provider = "mysql"
+//     url      = env("DATABASE_URL")
+// }
+
+// model post {
+//     id      Int    @id @default(autoincrement())
+//     title   String
+//     content String
+// }
+
+// model product {
+//     id            Int    @id @default(autoincrement())
+//     productname   String
+//     product_image String
+//     price         Int
+//     color         String
+//     quantity      Int
+//     brandname     String
+//     productdetail String
+//     product_id    String
+//     seller_id     String
+// }
+
+// model buyer_registeration {
+//     id       Int    @id @default(autoincrement())
+//     username String
+//     password Int
+//     gender   String
+//     email    String
+//     phone    Int
+//     buyer_id String
+//     role     Int
+// }
+
+// model seller_registeration {
+//     id        Int    @id @default(autoincrement())
+//     username  String
+//     password  Int
+//     gender    String
+//     email     String
+//     phone     Int
+//     seller_id String
+//     role      Int
+// }
+
+// model cart {
+//     id            Int    @id @default(autoincrement())
+//     productname   String
+//     productprice  Int
+//     product_id    String
+//     quantity      Int
+//     product_image String
+//     color         String
+//     brandname     String
+//     productdetail String
+//     buyer_id      String
+//     status        Int
+// }

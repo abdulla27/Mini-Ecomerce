@@ -1,5 +1,13 @@
 <%- include("./common/head")%>
     <style>
+        .item-detail{
+            border: 1px solid black;
+            border-radius: 10px;
+            width: 30vw;
+            display: flex;
+            align-content: center;
+            height: 30vh;
+        }
         .image img {
             width: 350px;
             height: 350px;
@@ -9,6 +17,8 @@
             margin-top: 10px;
             margin-right: 400px;
             margin-left: 500px;
+            border: 1px solid black;
+            border-radius:5px ;
         }
         .pname{
             text-align: center;
@@ -43,6 +53,7 @@
         <header>
             <%- include("./common/header")%>
         </header>
+        <div class="container">
         <div class="pname">
             <%= data.productname %>
         </div>
@@ -51,11 +62,13 @@
             <img src="<%= data.product_image %>" alt="img-fluid">
         </div>
         <h5>See details below:</h5>
-        <div class="pdetail"><p>Price: <strong>$<%= data.price%></strong></p></div>
+        <div class="item-detail">
+        <div class="pdetail"><p>Price: <strong>Rs. <%= data.price%></strong></p></div>
         <div class="pdetail">Color: <%= data.color%></div>
         <div class="pdetail">Quantity: <%= data.quantity%></div>
         <div class="pdetail">Brand: <%= data.brandname%></div>
         <div class="pinfo">Information: <%= data.productdetail%><br><br>
+        </div>
         <!-- <a href="/cart/<%= data.id %>"><button class="btn btn-primary">ADD to Cart</button></a> -->
 
         <center><div  class="col-md-3 col-lg-3 col-xl-2 d-flex">
@@ -103,7 +116,7 @@
         </div>
 
 
-
+    </div>
 
 
         <footer>

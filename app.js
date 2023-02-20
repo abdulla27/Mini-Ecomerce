@@ -11,6 +11,8 @@ const fs = require("fs");
 const fileupload = require("express-fileupload");
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 app.use(
   fileupload({
@@ -19,18 +21,18 @@ app.use(
 );
 app.use(express.json());
 
-app.post("/photoPC", (req, res) => {
-  let image = req.body.product_image;
-  let name = req.body.product;
-  let price = req.body.price;
+// app.post("/photoPC", (req, res) => {
+//   let image = req.body.product_image;
+//   let name = req.body.product;
+//   let price = req.body.price;
 
-  let q = "INSERT INTO productv8 values(NULL,?,?,?,NULL,NULL,NULL)";
-  mysqlcon.query(q, [name, price, image], (err, rows, fields) => {
-    if (err) throw err;
-    res.send("added bhai");
-    // res.redirect("products")
-  });
-});
+//   let q = "INSERT INTO productv8 values(NULL,?,?,?,NULL,NULL,NULL)";
+//   mysqlcon.query(q, [name, price, image], (err, rows, fields) => {
+//     if (err) throw err;
+//     res.send("added bhai");
+//     // res.redirect("products")
+//   });
+// });
 
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.urlencoded({ extended: true }));
@@ -41,7 +43,7 @@ app.set("view engine", "ejs");
 app.use("/checkout", require("./routes/razorpay"));
 
 require("./login")(app, express, mysqlcon);
-require("./registeration")(app, express, mysqlcon);
+// require("./registeration")(app, express, mysqlcon);
 // require("./password")(app,express,mysqlcon)
 require("./seller_registeration")(app, express, mysqlcon);
 require("./buyer_registeration")(app, express, mysqlcon);
@@ -79,6 +81,14 @@ app.get("/payment", acces2, async (req, res) => {
   let value = await mysqlcon(
     `select*from cart where buyer_id="${stbuyer_id}" and status=1`
   );
+
+  // let value = await prisma.cart.findMany({
+  //   where: {
+  //     buyer_id: String(stbuyer_id),
+  //     status: 1,
+  //   },
+  // });
+
   console.log({ value });
   let taxes = 0;
   let shipping = 0;
@@ -128,6 +138,6 @@ app.post("/payment", (req, res) => {
     });
 });
 
-app.listen(2002, () => {
-  console.log("listeningg 2002");
+app.listen(2003, () => {
+  console.log("listeningg 2003");
 });

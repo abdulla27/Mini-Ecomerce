@@ -27,4 +27,6 @@ app.post("/upload",upload.single("files"),(req,res)=>{
 
 app.listen(5000,()=>{
     console.log("listening the port 5000");
-})
+}) = await mysqlcon(
+        `insert into seller_registeration (username,password,seller_id,email,gender,phone,role) values ("${stusername}","${stpassword}","${stseller_id}","${stemail}","${stgender}","${stphone}",1)`
+      );
