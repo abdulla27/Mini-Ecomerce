@@ -7,6 +7,7 @@ const app = express();
 const mysqlcon = require("./demo");
 const multer = require("multer");
 const path = require("path");
+const port = process.env.PORT || 4000;
 const fs = require("fs");
 const fileupload = require("express-fileupload");
 const bodyParser = require("body-parser");
@@ -138,6 +139,6 @@ app.post("/payment", (req, res) => {
     });
 });
 
-app.listen(2003, () => {
+app.listen(port, () => {
   console.log("listeningg 2003");
 });
