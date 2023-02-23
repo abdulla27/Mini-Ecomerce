@@ -14,14 +14,14 @@ module.exports = (app, express, mysqlcon) => {
 
   router.get("/cart/:id", acces2, async (req, res) => {
     let stid = req.params.id;
-    let value1 = await mysqlcon(`select*from product where id=${stid} `);
+    let value1 = await mysqlcon(`select * from product where id=${stid}`);
     // let value1 = await prisma.product.findUnique({
     //   where: {
     //     id: Number(stid),
     //   },
     // });
 
-    res.render("addcart", { data: value1 });
+    res.render("addcart", { data: value1[0] });
     // res.send(value)
     console.log(stid);
     console.log(value1, "/?/?/?/?/?");
@@ -39,7 +39,7 @@ module.exports = (app, express, mysqlcon) => {
     let stproductdetail = req.body.productdetail;
     let stproductid = req.body.product_id;
     let a = await mysqlcon(
-      `select product_id from cart where product_id="${stproductid}"`
+      `select product_id from cart where product_id="${stproductid}" and buyer_id="${stbuyer_id}"`
     );
     // let a = await prisma.cart.findMany({
     //   where: {
@@ -56,7 +56,7 @@ module.exports = (app, express, mysqlcon) => {
 
       // const updatecart = await prisma.cart.updateMany({
       //   where: {
-      //     product_id: String(stproductid),
+      //     product_id: String(stproductid),s
       //     buyer_id: String(stbuyer_id),
       //   },
 
