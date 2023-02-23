@@ -20,5 +20,8 @@
   },
   "prisma": {
     "schema": "./prisma/schema.prisma"
+  },
+  "scripts": {
+    "start": "nodemon ./app"
   }
 }
