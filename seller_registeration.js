@@ -1,8 +1,8 @@
 const uuid = require("uuid");
 const acces = require("./verifytoken");
 const jwt = require("jsonwebtoken");
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+// const { PrismaClient } = require("@prisma/client");
+// const prisma = new PrismaClient();
 module.exports = (app, express, mysqlcon) => {
   const router = express.Router();
   app.use("/", router);

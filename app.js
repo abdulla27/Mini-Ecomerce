@@ -12,8 +12,8 @@ const fs = require("fs");
 const fileupload = require("express-fileupload");
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+// const { PrismaClient } = require("@prisma/client");
+// const prisma = new PrismaClient();
 
 app.use(
   fileupload({

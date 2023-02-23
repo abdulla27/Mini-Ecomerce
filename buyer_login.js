@@ -1,6 +1,6 @@
 // const { Prisma } = require("@prisma/client")
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+// const { PrismaClient } = require("@prisma/client");
+// const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 module.exports = (app, express, mysqlcon) => {
   const acces = require("./verifytoken");
@@ -16,14 +16,13 @@ module.exports = (app, express, mysqlcon) => {
     let stusername = req.body.username;
     let stpassword = req.body.password;
     try {
-      let value= await mysqlcon("select*from buyer_registeration")
+      let value = await mysqlcon("select*from buyer_registeration");
       // let value = await prisma.buyer_registeration.findMany();
       console.log(value, "<><><><>");
 
       for (let i in value) {
         if (value[i].username == stusername) {
           if (value[i].password == stpassword) {
-  
             let myToken = jwt.sign(
               JSON.stringify({
                 buyer_id: value[i]["buyer_id"],

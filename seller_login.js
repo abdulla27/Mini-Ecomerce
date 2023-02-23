@@ -1,7 +1,7 @@
 module.exports = (app, express, mysqlcon) => {
   const acces = require("./verifytoken");
-  const { PrismaClient } = require("@prisma/client");
-  const prisma = new PrismaClient();
+  // const { PrismaClient } = require("@prisma/client");
+  // const prisma = new PrismaClient();
   const jwt = require("jsonwebtoken");
   const router = express.Router();
   app.use("/", router);
